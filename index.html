@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="./greet.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting</title>
+</head>
+<body>
+    <div class="box">
+        <h1>Greetings</h1>
+        
+        <div class="text-box">
+
+            <div class="error">
+                <p>Enter a name with letters from A-Z</p>
+            </div>
+
+            <div class="display">
+                <span class="nameDisplayed"></span>
+            </div>
+            
+            <div class="naming">
+                Name
+            </div>
+            <div class="naming">
+                <input class="textBoxBttn" value="" name="text1" type="text" placeholder="type name">
+            </div>
+
+            <div class="naming">
+                <h4>Counter</h4>
+                <span class="counter"></span>
+            </div>
+            
+        </div>
+
+        <div class="radios">
+            <label class="">
+                <input class="radioBttns" type="radio" id="id1" name="language" value="English">
+                <span class="labelRadio">English</span>
+            </label>
+            <label class="">
+                <input class="radioBttns" type="radio" id="id2" name="language" value="Sesotho">
+                <span class="labelRadio">Sesotho</span>
+            </label>
+            <label class="">
+                <input class="radioBttns" type="radio" id="id3" name="language" value="Isixhosa">
+                <span class="labelRadio">Isixhosa</span>
+            </label>
+        </div>
+
+        <div class="greet-reset">
+            <button class="primary-bttn greetMeBtn" onclick="greet()" type="button" id="theGrt" name="button"> <span>Greet Me!</span></button>
+            <button class="primary-bttn resetBtn" type="button" name="button"> <span>RESET!</span></button>
+        </div>
+       
+    </div> 
+    
+    <script src="greetings-factory.js"></script>
+    <script src="greet.js"></script>
+</body>
+</html>
+<!-- <p>Clear the input field when it gets focus:</p> -->
+<!-- <input type="text" onfocus="this.value=''" value="Blabla"> -->

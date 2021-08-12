@@ -1,0 +1,193 @@
+body{
+    background-image: url(https://s3-eu-west-1.amazonaws.com/arisexpress/media/wallpaper/seasons/seasons1680x1050.jpg);
+    background-position: inherit;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-origin: padding-box;
+    /* background-color:rgb(199, 98, 219) */
+    /* background-color: darkorchid; */
+}
+h1 {
+    text-align: center;
+    font-family: cursive;
+    padding-top: 20px;
+}
+.box{
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* background-color: rgb(225, 109, 248); */
+    background-image: url(https://s3-eu-west-1.amazonaws.com/arisexpress/media/wallpaper/seasons/seasons1680x1050.jpg);
+    background-attachment: fixed;
+    /* background-position: inherit; */
+    width: 45%;
+    /* border: rgb(249, 176, 252) solid; */
+    border-radius: 1%;
+    box-shadow: 5px 4px 4px 7px lightblue;
+    box-shadow: lightblue;
+    margin: auto;
+    font-family: cursive;
+    height: 65vh;
+}
+.text-box{
+    padding-bottom: 25px;
+    text-align: center;
+}
+.error{
+    font-size: 10px;
+    color: white;
+    width: 50%;
+    margin-left: 35%;
+}
+.naming{
+    display: inline-flex;
+}
+.radios{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px;
+    text-align: center;
+
+}
+p{
+    text-align: left;
+}
+.greet-reset{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    border-radius: 30%;
+    text-align: center;
+    padding-top: 8px;
+}
+.display{
+    text-align: center;
+    padding-top: 25px;
+    /* background-color: rgb(160, 70, 155); */
+    /* border-radius: 15px; */
+    /* padding-bottom: 10px; */
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    margin: auto;
+    /* padding-left: 50%; */
+}
+/* .grit{
+    text-align: center;
+} */
+.greetMeBtn, .resetBtn{
+    transition-duration: 00.5s;
+    background-color: rgb(108, 183, 206);
+    color: black;
+    font-size: 15px;
+    width: 15%;
+    height: 3vh;
+    border-radius: 10px;
+    /* text-align: center; */
+}
+.greetMeBtn span, .resetBtn span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition-duration: 00.5s;
+}
+.greetMeBtn:hover, .resetBtn:hover{
+    background-color: rgb(97, 167, 247);
+    color: rgb(252, 252, 253);
+    box-shadow: 1 10px 20px 1 rgb(99, 175, 236), 0 8px 30px 0 rgb(110, 169, 247);
+}
+.greetMeBtn span::after, .resetBtn span::after{
+    /* content: '\00bb'; */
+    position: absolute;
+    opacity: 2;
+    top: 0;
+    right: 20px;
+    transition: 00.5s;
+}
+.greetMeBtn:hover span::after, .resetBtn:hover span::after{
+    opacity: 2;
+    right: 0;
+}
+.red{
+    color: red;
+}
+.counter{
+    padding-top: 20px;
+    padding-left: 10px;
+}
+.greet-reset{
+    display: flex;
+    flex-direction: row;
+}
+.button-1{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    justify-content: center;
+    /* background-color: darkgoldenrod; */
+}
+button{
+    /* position: absolute; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 10%;
+    font-size: 35px;
+}
+form{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
+}
+.radio-bttn{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* background-color: darkgreen; */
+    padding-top: 30px;
+    padding-bottom: 20px;
+    justify-content: center;
+    justify-content: space-around;
+}
+input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.text-box{
+    padding-top: 20px;
+}
+.last-bttns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    font-size: 7px;
+    padding-top: 25px;
+}
+.rst{
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 25%;
+    font-size: 15px;
+}
+.greet-1{
+    font-size: 40px;
+}
+.cnt{
+    font-size: 15px;
+    border-radius: 25px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.greetBttn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 30px;
+}
