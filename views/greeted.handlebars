@@ -1,0 +1,26 @@
+<div class="entry">
+    <h1>
+        Greeted users
+    </h1>
+
+    {{#each model}}
+    <ul>
+        <a href="/counter/{{username}}">
+        <li>{{username}}</li>
+        </a>
+    </ul>
+    {{/each}}
+    <br>
+
+    <div class="btns">
+        <form action="/clear" method="POST">
+        <button class="clearBtn" type="submit">Reset</button>
+
+        </form>
+        <form action="/home" method="POST">
+            <button class="backbtn" type="submit">Home</button>
+
+        </form>
+    </div>
+
+</div>

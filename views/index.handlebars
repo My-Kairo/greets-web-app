@@ -1,36 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="./greet.css" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greeting</title>
-</head>
-<body>
-    <div class="box">
+<section class="inner-section">
+
+    <div class="row">
+        <br>
+        <div class="box">
         <h1>Greetings</h1>
-        
+        {{#if messages.info}}
         <div class="text-box">
 
-            <div class="error">
+            <div class="error">{{messages.info}}
                 <p>Enter a name with letters from A-Z</p>
             </div>
-
-            <div class="display">
-                <span class="nameDisplayed"></span>
+            {{/if}}
+            <div class="display">{{display}}
+                
+                <span class="nameDisplayed" >
+                    
+                </span>
+                
             </div>
-            
+            <form action="/gretings" method="POST">
             <div class="naming">
                 Name
             </div>
             <div class="naming">
-                <input class="textBoxBttn" value="" name="text1" type="text" placeholder="type name">
+                <input class="textBoxBttn" value="" name="textBoxBttn" type="text" placeholder="type name">
+                <label class="countHere">{{greetedTimes}}</label>
             </div>
-
+            <br>
             <div class="naming">
-                <h4>Counter</h4>
+                <table style="background-color: gray;">
+                    <tr>
+                        <td>
+                            <a href="/greeted"><h4>Counter</h4></a>
                 <span class="counter"></span>
+                        </td>
+                    </tr>
+                </table>
             </div>
             
         </div>
@@ -51,15 +56,19 @@
         </div>
 
         <div class="greet-reset">
-            <button class="primary-bttn greetMeBtn" onclick="greet()" type="button" id="theGrt" name="button"> <span>Greet Me!</span></button>
+            <button class="primary-bttn greetMeBtn" onclick="greet()" type="submit" id="theGrt" name="button"> <span>Greet Me!</span></button>
+            </form>
+            <form action="/reset" method="POST">
             <button class="primary-bttn resetBtn" type="button" name="button"> <span>RESET!</span></button>
+            </form>
         </div>
-       
-    </div> 
-    
-    <script src="greetings-factory.js"></script>
-    <script src="greet.js"></script>
-</body>
-</html>
+       <br>
+        <div class="finish">
+            <div>{{greetMe}}</div>
+        </div>
+        <br>
+
+
+</section>
 <!-- <p>Clear the input field when it gets focus:</p> -->
 <!-- <input type="text" onfocus="this.value=''" value="Blabla"> -->
