@@ -1,91 +1,113 @@
 body{
-    background-image: url(https://s3-eu-west-1.amazonaws.com/arisexpress/media/wallpaper/seasons/seasons1680x1050.jpg);
-    background-position: inherit;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-origin: padding-box;
-    /* background-color:rgb(199, 98, 219) */
-    /* background-color: darkorchid; */
+    background-color: EA9E8D;
 }
 h1 {
     text-align: center;
     font-family: cursive;
     padding-top: 20px;
+    color: rgb(3, 135, 250);
 }
 .box{
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* background-color: rgb(225, 109, 248); */
-    background-image: url(https://s3-eu-west-1.amazonaws.com/arisexpress/media/wallpaper/seasons/seasons1680x1050.jpg);
-    background-attachment: fixed;
-    /* background-position: inherit; */
-    width: 45%;
-    /* border: rgb(249, 176, 252) solid; */
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border: rgb(249, 176, 252) solid;
     border-radius: 1%;
     box-shadow: 5px 4px 4px 7px lightblue;
     box-shadow: lightblue;
     margin: auto;
     font-family: cursive;
-    height: 65vh;
-}
-.text-box{
-    padding-bottom: 25px;
-    text-align: center;
+    height: 75vh;
 }
 .error{
     font-size: 10px;
-    color: white;
+    color: rgb(250, 10, 10);
     width: 50%;
     margin-left: 35%;
+    text-align: center;
+    padding-top: 0%;
 }
 .naming{
     display: inline-flex;
+    color: rgb(3, 4, 5);
+    /* height: 5vh; */
+    text-align: center;
+    padding-left: 35%;
+    padding-top: 0%;
 }
 .radios{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    padding: 20px;
+    width: 75%;
     text-align: center;
+    color: rgb(18, 30, 41);
+    padding-top: 25px;
 
 }
 p{
     text-align: left;
+    color: rgb(24, 34, 43);
 }
-.greet-reset{
+h4{
+    color: rgb(1, 120, 224);
+}
+.error{
+    padding-top: 0%;
+}
+.finish{
+    padding-top: 2%;
+}
+.greet{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     padding-bottom: 10px;
     border-radius: 30%;
     text-align: center;
-    padding-top: 8px;
+    padding-top: 35px;
+}
+.reset{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    border-radius: 30%;
+    text-align: center;  
 }
 .display{
     text-align: center;
-    padding-top: 25px;
-    /* background-color: rgb(160, 70, 155); */
-    /* border-radius: 15px; */
-    /* padding-bottom: 10px; */
-    width: 25%;
+    width: 10%;
     display: flex;
     flex-direction: row;
+    padding-left: 45%;
     position: relative;
-    margin: auto;
-    /* padding-left: 50%; */
 }
-/* .grit{
-    text-align: center;
-} */
-.greetMeBtn, .resetBtn{
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.greetMeBtn {
     transition-duration: 00.5s;
     background-color: rgb(108, 183, 206);
-    color: black;
+    color: rgb(24, 20, 20);
     font-size: 15px;
     width: 15%;
     height: 3vh;
     border-radius: 10px;
     /* text-align: center; */
+}
+.primary-bttn {
+    width: 15px;
+}
+.resetBtn {
+    transition-duration: 00.5s;
+    background-color: rgb(108, 183, 206);
+    color: rgb(24, 20, 20);
+    font-size: 15px;
+    width: 100%;
+    height: 3vh;
+    border-radius: 10px;
 }
 .greetMeBtn span, .resetBtn span{
     cursor: pointer;
@@ -95,7 +117,7 @@ p{
 }
 .greetMeBtn:hover, .resetBtn:hover{
     background-color: rgb(97, 167, 247);
-    color: rgb(252, 252, 253);
+    color: rgb(247, 8, 227);
     box-shadow: 1 10px 20px 1 rgb(99, 175, 236), 0 8px 30px 0 rgb(110, 169, 247);
 }
 .greetMeBtn span::after, .resetBtn span::after{
@@ -116,6 +138,7 @@ p{
 .counter{
     padding-top: 20px;
     padding-left: 10px;
+    color: rgb(3, 76, 139);
 }
 .greet-reset{
     display: flex;
@@ -190,4 +213,7 @@ input{
     flex-direction: row;
     justify-content: center;
     padding-top: 30px;
+}
+.greeted{
+    text-align: center;
 }

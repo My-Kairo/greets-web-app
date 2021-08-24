@@ -1,24 +1,22 @@
 <section class="inner-section">
 
     <div class="row">
-        <br>
         <div class="box">
         <h1>Greetings</h1>
+        <hr>
         {{#if messages.info}}
-        <div class="text-box">
 
             <div class="error">{{messages.info}}
-                <p>Enter a name with letters from A-Z</p>
             </div>
             {{/if}}
             <div class="display">{{display}}
                 
                 <span class="nameDisplayed" >
-                    
+                        <div>{{greetMe}}</div>
                 </span>
                 
             </div>
-            <form action="/gretings" method="POST">
+            <form class="form" action="/greet" method="POST">
             <div class="naming">
                 Name
             </div>
@@ -26,49 +24,47 @@
                 <input class="textBoxBttn" value="" name="textBoxBttn" type="text" placeholder="type name">
                 <label class="countHere">{{greetedTimes}}</label>
             </div>
-            <br>
+            
             <div class="naming">
-                <table style="background-color: gray;">
-                    <tr>
-                        <td>
-                            <a href="/greeted"><h4>Counter</h4></a>
-                <span class="counter"></span>
-                        </td>
+                {{!-- <table style="background-color: gray;"> --}}
+                    {{!-- <tr>
+                        <td> --}}
+                            <h4>Counter</h4>
+                <span class="counter">{{count}}</span>
+                        {{!-- </td>
                     </tr>
-                </table>
+                </table> --}}
             </div>
             
-        </div>
+            <div class="greeted"><a href="/greeted">Greeted List</a></div>
+            <div class="radios">
+                <label class="">
+                    <input class="radioBttns" type="radio" id="id1" name="language" value="English">
+                    <span class="labelRadio">English</span>
+                </label>
+                <label class="">
+                    <input class="radioBttns" type="radio" id="id2" name="language" value="Sesotho">
+                    <span class="labelRadio">Sesotho</span>
+                </label>
+                <label class="">
+                    <input class="radioBttns" type="radio" id="id3" name="language" value="IsiXhosa">
+                    <span class="labelRadio">Isixhosa</span>
+                </label>
+            </div>
 
-        <div class="radios">
-            <label class="">
-                <input class="radioBttns" type="radio" id="id1" name="language" value="English">
-                <span class="labelRadio">English</span>
-            </label>
-            <label class="">
-                <input class="radioBttns" type="radio" id="id2" name="language" value="Sesotho">
-                <span class="labelRadio">Sesotho</span>
-            </label>
-            <label class="">
-                <input class="radioBttns" type="radio" id="id3" name="language" value="Isixhosa">
-                <span class="labelRadio">Isixhosa</span>
-            </label>
-        </div>
-
-        <div class="greet-reset">
-            <button class="primary-bttn greetMeBtn" onclick="greet()" type="submit" id="theGrt" name="button"> <span>Greet Me!</span></button>
+            <div class="greet">
+            <button class="bttn greetMeBtn"  type="submit" id="theGrt" name="button"> <span>Greet Me!</span></button>
+            </div>
             </form>
+            
+            <div class="reset">
             <form action="/reset" method="POST">
             <button class="primary-bttn resetBtn" type="button" name="button"> <span>RESET!</span></button>
             </form>
+            </div>
+            
         </div>
-       <br>
-        <div class="finish">
-            <div>{{greetMe}}</div>
-        </div>
-        <br>
-
-
+    </div>
 </section>
 <!-- <p>Clear the input field when it gets focus:</p> -->
 <!-- <input type="text" onfocus="this.value=''" value="Blabla"> -->

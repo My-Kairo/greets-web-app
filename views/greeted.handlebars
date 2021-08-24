@@ -3,10 +3,10 @@
         Greeted users
     </h1>
 
-    {{#each model}}
+    {{#each namesList}}
     <ul>
-        <a href="/counter/{{username}}">
-        <li>{{username}}</li>
+        <a href="/counter/{{@key}}">
+        <li>{{@key}}</li>
         </a>
     </ul>
     {{/each}}
