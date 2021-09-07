@@ -23,6 +23,8 @@ h1 {
     font-size: 10px;
     color: rgb(250, 10, 10);
     width: 50%;
+    font-size: 25px;
+    font-weight: bolder;
     margin-left: 35%;
     text-align: center;
     padding-top: 0%;
@@ -46,7 +48,7 @@ h1 {
 
 }
 p{
-    text-align: left;
+    text-align: center;
     color: rgb(24, 34, 43);
 }
 h4{
@@ -160,12 +162,15 @@ button{
     justify-content: center;
     width: 10%;
     font-size: 35px;
+    
+
 }
 form{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     justify-content: center;
+    text-align: center;
 }
 .radio-bttn{
     display: flex;

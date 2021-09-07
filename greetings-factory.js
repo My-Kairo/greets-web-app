@@ -5,22 +5,24 @@ module.exports = function Greeting(local) {
     var pool = local;
     
 
-    async function TheName(user) { 
+    async function namesFromDB(user) { 
+        
         if (user != '' && /^[a-zA-Z]+$/.test(user)) {
             var name = user[0].toUpperCase() + user.slice(1).toLowerCase();
-            const sql = await pool.query(`SELECT * FROM greetings WHERE username = $1`, [name]);
+            const sql = await pool.query(`select * from greet where username = $1`, [name]);
     
             if (sql.rows.length == 0) {
-                await pool.query(`insert into greetings (username, greetedTimes) values ($1, $2)`, [name, 1]);
+                await pool.query(`insert into greet (username, counter_) values ($1, $2)`, [name, 1]);
                 } else {
-                    await pool.query(`UPDATE greetings SET greetedTimes = greetedTimes + 1 WHERE username = $1`, [name])
+                    await pool.query(`update greet set counter_ = counter_ + 1 where username = $1`, [name])
                     }
         }
+        setName(user);
     }
 // store names into the object
     function setName(name) {
-        // if (string != '' && /^[a-zA-Z]+$/.test(string)) {
-        //     var name = string[0].toUpperCase() + string.slice(1).toLowerCase();
+        // if (name != '' && /^[a-zA-Z]+$/.test(name)) {
+        //     var name = name[0].toUpperCase() + name.slice(1).toLowerCase();
         if(namesList[name]===undefined){
             namesList[name] = 1
         }else{
@@ -54,21 +56,21 @@ module.exports = function Greeting(local) {
     }
 
     async function Table(){
-        const sqlCount = await pool.query("SELECT COUNT(*) FROM greetings");
+        const sqlCount = await pool.query("select count(*) from greet");
         return sqlCount.rows[0].count;
     }
 
     async function greeted(){
-        const sqlCount = await pool.query("SELECT * FROM greetings ORDER BY userName");
+        const sqlCount = await pool.query("select * from greet");
         return sqlCount.rows;
     }
 
     async function mydatabase() {
-        await pool.query("DELETE FROM greetings");
+        await pool.query("delete from greet");
     }
 
     async function getUserName(name){
-        const sqldb = await pool.query("SELECT * FROM greetings WHERE userName = $1", [name])
+        const sqldb = await pool.query("select * from greet where username = $1", [name])
         return sqldb.rows;
     }
     
@@ -78,7 +80,7 @@ module.exports = function Greeting(local) {
         getNames,
         greetMessage,
         getGreet,
-        TheName,
+        namesFromDB,
         Table,
         greeted,
         mydatabase,
