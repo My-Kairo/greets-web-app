@@ -106,12 +106,12 @@ app.post("/greet", async function (req, res, next) {
       // greeting.greetMessage(language, names)
     }
     // greeting.getNames()
-    console.log(greeting.Table());
-    // res.render('index', {
-    //     greetMe: greeting.getGreet(),
-    //     count: await greeting.Table()
-    // });
-  } catch (error) {
+    // console.log(greeting.Table());
+    res.render('index', {
+        greetMe: greeting.getGreet(),
+        count: await greeting.Table()
+    });
+  }catch(error) {
     next(error);
   }
 });
