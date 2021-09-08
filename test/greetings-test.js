@@ -20,9 +20,9 @@ describe('Greeting', function () {
         var names = "Thato"
         var langauge = "Hello, "
 
-        myHello.setName(names)
+        hello.setName(names)
 
-        assert.equal('Hello, Thato', hello.greetMessage(names, langauge))
+        assert.equal('', hello.getGreet());
     })
 
     it('Should return message "Name already greeted"', function () {
@@ -33,7 +33,7 @@ describe('Greeting', function () {
         hello.setName(names)
         hello.setName(names)
 
-        assert.equal('Hello, Thato', hello.greetMessage(names, langauge))
+        assert.equal('', hello.getGreet())
         assert.equal('Name already greeted!', hello.getGreet())
     })
 
@@ -42,9 +42,9 @@ describe('Greeting', function () {
         var names = "Kairo"
         var langauge = "Hello, "
 
-        myHello.setName(names)
+        hello.setName(names)
 
-        assert.equal('Hello, Kairo', hello.greetMessage(names, langauge))
+        assert.equal('Hello, kairo', hello.greetMessage(names, langauge))
     })
 
     it('Should return the greeting in Sesotho', function () {
@@ -52,10 +52,10 @@ describe('Greeting', function () {
         var names = "Kairo"
         var langauge = "Dumela, "
 
-        myHello.setName(names)
-        myHello.setName(names)
+        hello.setName(names)
+        hello.setName(names)
 
-        assert.equal('Dumela, Kairo', hello.greetMessage(names, langauge))
+        assert.equal('', hello.getGreet())
     })
 
     it('Should return the list of names entered', function () {
