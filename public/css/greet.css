@@ -5,7 +5,10 @@ h1 {
     text-align: center;
     font-family: cursive;
     padding-top: 20px;
-    color: rgb(3, 135, 250);
+    color: rgb(246, 248, 250);
+    background-color: rgb(36, 112, 211);
+    padding-bottom: 15px;
+    border-style: solid;
 }
 .box{
     display: flex;
@@ -30,7 +33,8 @@ h1 {
     padding-top: 0%;
 }
 .naming{
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     color: rgb(3, 4, 5);
     /* height: 5vh; */
     text-align: center;
@@ -40,7 +44,7 @@ h1 {
 .radios{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     width: 75%;
     text-align: center;
     color: rgb(18, 30, 41);
@@ -221,4 +225,26 @@ input{
 }
 .greeted{
     text-align: center;
+    background-color: rgb(3, 69, 145);
+    border-style: groove;
+    color: cornsilk;
+    text-decoration: none;
+}
+h3 {
+    color: cornsilk;
+    text-decoration: none;
+}
+.counter {
+    text-align: center;
+    margin: 0%;
+}
+a {
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    color: green;
+}
+ul {
+    list-style-type: none;
+    font-size: 20px;
 }
