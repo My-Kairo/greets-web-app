@@ -17,7 +17,6 @@ module.exports = function Greeting(local) {
                     await pool.query(`update greet set counter_ = counter_ + 1 where username = $1`, [name])
                     }
         }
-        setName(user);
     }
 // store names into the object
     function setName(name) {

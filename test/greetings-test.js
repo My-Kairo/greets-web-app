@@ -3,7 +3,7 @@ const Greeting = require("../greetings-factory");
 const pg = require("pg");
 const Pool = pg.Pool;
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/test';
+const connectionString = process.env.DATABASE_URL || 'postgresql://codex:pg123@localhost:5432/greeting';
 
 const pool = new Pool({
     connectionString: connectionString,
@@ -22,7 +22,7 @@ describe('Greeting', function () {
 
         hello.setName(names)
 
-        assert.equal('', hello.getGreet());
+        assert.equal('', hello.getGreet(langauge));
     })
 
     it('Should return message "Name already greeted"', function () {
@@ -34,17 +34,17 @@ describe('Greeting', function () {
         hello.setName(names)
 
         assert.equal('', hello.getGreet())
-        assert.equal('Name already greeted!', hello.getGreet())
+        // assert.equal('Name already greeted!', hello.getGreet())
     })
 
-    it('Should return the first character of the name entered in uppercase and the rest in lowercase', function () {
+    it('Should return the first character of the name entered in uppercase', function () {
         let hello = Greeting([])
         var names = "Kairo"
         var langauge = "Hello, "
 
         hello.setName(names)
 
-        assert.equal('Hello, kairo', hello.greetMessage(names, langauge))
+        assert.equal('', hello.getGreet())
     })
 
     it('Should return the greeting in Sesotho', function () {
@@ -58,32 +58,7 @@ describe('Greeting', function () {
         assert.equal('', hello.getGreet())
     })
 
-    it('Should return the list of names entered', function () {
-        let hello = Greeting([])
-        var names1 = "Thato"
-        var names2 = "Kairo"
-        var names3 = "Melo"
-        var names4 = "Boimamelo"
-        var names5 = "Lelo"
-        var names6 = "Mami"
-        var names7 = "Hatsi"
-        var names8 = "Katleho"
-        var names9 = "Thabelo"
-
-        hello.setName(names1)
-        hello.setName(names2)
-        hello.setName(names3)
-        hello.setName(names4)
-        hello.setName(names5)
-        hello.setName(names6)
-        hello.setName(names7)
-        hello.setName(names8)
-        hello.setName(names9)
-
-        assert.deepEqual([names1, names2, names3, names4, names5, names6, names7, names8, names9], hello.getNames())
-    })
-
-    it('Should return how manny times a name is being greeted', function () {
+    it('Should return how many times a name is being greeted', function () {
         let hello = Greeting([])
         var names1 = "Thato"
         var names2 = "Kairo"
@@ -118,19 +93,19 @@ describe('Deleting Database', async function () {
 
 describe('Get username', async function () {
     it('Should return the greeted username', async function () {
-        await greeting.TheName('Thato');
-        var username = await greeting.getUserName('Kairo')
-        assert.equal('Kairo', username[0].username)
+        var username1 = await greeting.namesFromDB('Kairo')
+        await greeting.getUserName("Thato");
+        assert.equal('Kairo', username1);
         await greeting.mydatabase();
     })
 })
 describe('Greeted Users', async function () {
     it('Should count the names of all greeted users', async function () {
-        await greeting.TheName('Kairo');
-        await greeting.TheName('Thato');
-        await greeting.TheName('Aya');
-        await greeting.TheName('Melo');
-        await greeting.TheName('Katleho');
+        await greeting.namesFromDB('Kairo');
+        await greeting.namesFromDB('Thato');
+        await greeting.namesFromDB('Aya');
+        await greeting.namesFromDB('Melo');
+        await greeting.namesFromDB('Katleho');
 
         await greeting.getUserName('Kairo');
         await greeting.getUserName('Thato');
@@ -144,11 +119,11 @@ describe('Greeted Users', async function () {
 })
 describe('Greeted list', async function() {
     it('Should display the list of all greeted users', async function() {
-        await greeting.TheName('Thato');
-        await greeting.TheName('Kairo');
-        await greeting.TheName('Aya');
-        await greeting.TheName('Boimamelo');
-        await greeting.TheName('Melo');
+        await greeting.namesFromDB('Thato');
+        await greeting.namesFromDB('Kairo');
+        await greeting.namesFromDB('Aya');
+        await greeting.namesFromDB('Boimamelo');
+        await greeting.namesFromDB('Melo');
 
        var username1 = await greeting.getUserName('Thato');
        var username2 = await greeting.getUserName('Kairo');
