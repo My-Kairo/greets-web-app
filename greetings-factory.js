@@ -46,8 +46,9 @@ module.exports = function Greeting(local) {
         return Object.keys(namesList).length;
     }
 
-    function getNames() {
-        return namesList;
+    async function getNames() {
+        const slctdNames = await pool.query('select username from greet');
+        return slctdNames.rows;
     }
 
     function getGreet() {
@@ -70,7 +71,7 @@ module.exports = function Greeting(local) {
 
     async function getUserName(name){
         const sqldb = await pool.query("select * from greet where username = $1", [name])
-        return sqldb.rows;
+        return sqldb.rows[0].counter_;
     }
     
     return {

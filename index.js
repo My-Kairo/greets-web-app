@@ -107,28 +107,30 @@ app.post("/greet", async function (req, res, next) {
     }
     // greeting.getNames()
     // console.log(greeting.Table());
-    res.render('index', {
-        greetMe: greeting.getGreet(),
-        count: await greeting.Table()
-    });
+    
   }catch(error) {
     next(error);
   }
 });
 
-app.get("/greeted", function (req, res) {
+app.post("/greet", function (req, res) {
   var namesList = greeting.getNames();
   res.render("greeted", { namesList });
 });
 
 app.get("/greeted", async function (req, res) {
   try {
-    res.render("greeted", {
-      namesList: await greeting.greeted(),
+    var nameList = await greeting.getNames();
+    // console.log(nameList)
+    res.render("greeted", { 
+      namesList: nameList,
+      // namesList: await greeting.greeted()
     });
-  } catch (error) {
+    
+  } catch(error) {
     console.log(error);
   }
+  
 });
 
 app.post("/counter", async function (req, res) {
@@ -141,39 +143,40 @@ app.post("/counter", async function (req, res) {
   }
 });
 
-app.get("/counter/:username", function (req, res) {
+app.get("/counter/:username", async function (req, res) {
   var name = req.params.username;
-  let grtNames = greeting.getNames();
+  let grtNames = await greeting.getUserName(name);
+  console.log(grtNames)
   res.render("counter", {
     username: name,
-    greetedTimes: grtNames[name],
+    greetedTimes: grtNames
   });
 });
 
 app.post("/home", function (req, res) {
   res.redirect("/");
 });
-app.post("/clear", async function (req, res, next) {
+app.post("/clear", async function (req, res) {
   try {
     req.flash("info", "Database deleted successfully");
     await greeting.mydatabase();
     res.render("greeted");
-  } catch (error) {
-    next(error);
+  } catch (error){
+    console.log(error)
   }
 });
 
-app.post("/reset", async function (req, res, next) {
+app.post("/reset", async function (req, res) {
   try {
     req.flash("info", "Database deleted successfully");
     await greeting.mydatabase();
     res.redirect("/");
   } catch (error) {
-    next(error);
+    console.log(error);
   }
 });
 
-let PORT = process.env.PORT || 2030;
+let PORT = process.env.PORT || 1810;
 app.listen(PORT, function () {
   console.log("App started at port", PORT);
 });
