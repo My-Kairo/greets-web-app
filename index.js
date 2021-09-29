@@ -113,8 +113,8 @@ app.post("/greet", async function (req, res, next) {
   }
 });
 
-app.post("/greet", function (req, res) {
-  var namesList = greeting.getNames();
+app.post("/greet", async function (req, res) {
+  var namesList = await greeting.getNames();
   res.render("greeted", { namesList });
 });
 
