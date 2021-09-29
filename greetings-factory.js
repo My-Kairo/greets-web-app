@@ -65,13 +65,13 @@ module.exports = function Greeting(local) {
         return sqlCount.rows;
     }
 
-    async function mydatabase() {
-        await pool.query("delete from greet");
-    }
-
     async function getUserName(name){
         const sqldb = await pool.query('select * from greet where username = $1', [name])
         return sqldb.rows[0].counter_;
+    }
+
+    async function mydatabase() {
+        await pool.query('delete from greet');
     }
     
     return {
