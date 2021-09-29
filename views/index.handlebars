@@ -1,66 +1,66 @@
-<section class="inner-section">
+<section class='inner-section'>
 
-    <div class="row">
-        <div class="box">
+    <div class=row>
+        <div class='box'>
         <h1>Greetings</h1>
         <hr>
         {{#if messages.info}}
 
-            <div class="error">{{messages.info}}
+            <div class='error'>{{messages.info}}
             </div>
             {{/if}}
-            <div class="display">{{display}}
+            <div class='display'>{{display}}
                 
-                <span class="nameDisplayed" >
+                <span class='nameDisplayed'>
                         <div>{{greetMe}}</div>
                 </span>
                 
             </div>
-            <form class="form" action="/greet" method="POST">
-            <div class="naming">
+            <form class='form' action='/greet' method='POST'>
+            <div class='naming'>
                 Name
             </div>
-            <div class="naming">
-                <input class="textBoxBttn" value="" name="textBoxBttn" type="text" placeholder="type name">
-                <label class="countHere">{{greetedTimes}}</label>
+            <div class='naming'>
+                <input class='textBoxBttn' value='' name='textBoxBttn' type='text' placeholder='type name'>
+                <label class='countHere'>{{greetedTimes}}</label>
             </div>
             
-            <div class="naming">
+            <div class='naming'>
                 {{!-- <table style="background-color: gray;"> --}}
                     {{!-- <tr>
                         <td> --}}
                             <h4>Counter
-                                <span class="counter">{{count}}</span>
+                                <span class='counter'>{{count}}</span>
                             </h4>
                         {{!-- </td>
                     </tr>
                 </table> --}}
             </div>
             
-            <div class="greeted"><a href="/greeted"><h3>Greeted List</h3></a></div>
-            <div class="radios">
-                <label class="">
-                    <input class="radioBttns" type="radio" id="id1" name="language" value="English">
-                    <span class="labelRadio">English</span>
+            <div class='greeted'><a href='/greeted'><h3>Greeted List</h3></a></div>
+            <div class='radios'>
+                <label class=''>
+                    <input class='radioBttns' type='radio' id='id1' name='language' value='English'>
+                    <span class='labelRadio'>English</span>
                 </label>
-                <label class="">
-                    <input class="radioBttns" type="radio" id="id2" name="language" value="Sesotho">
-                    <span class="labelRadio">Sesotho</span>
+                <label class=''>
+                    <input class='radioBttns' type='radio' id='id2' name='language' value='Sesotho'>
+                    <span class='labelRadio'>Sesotho</span>
                 </label>
-                <label class="">
-                    <input class="radioBttns" type="radio" id="id3" name="language" value="IsiXhosa">
-                    <span class="labelRadio">Isixhosa</span>
+                <label class=''>
+                    <input class='radioBttns' type='radio' id='id3' name='language' value='IsiXhosa'>
+                    <span class='labelRadio'>Isixhosa</span>
                 </label>
             </div>
 
-            <div class="greet">
-            <button class="bttn greetMeBtn"  type="submit" id="theGrt" name="button"> <span>Greet Me!</span></button>
+            <div class='greet'>
+            <button class='bttn greetMeBtn' type='submit' id='theGrt' name='button'> <span>Greet Me!</span></button>
             </div>
             </form>
             
-            <div class="reset">
-            <form action="/reset" method="POST">
-            <button class="primary-bttn resetBtn" type="button" name="button"> <span>RESET!</span></button>
+            <div class='reset'>
+            <form action='/reset' method="POST">
+            <button class='primary-bttn resetBtn' type='button' name='button'> <span>RESET!</span></button>
             </form>
             </div>
             
