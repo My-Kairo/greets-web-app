@@ -5,7 +5,7 @@ module.exports = function Greeting(local) {
     var pool = local;
     
 
-    async function namesFromDB(user) { 
+    async function setNames(user) { 
         
         if (user != '' && /^[a-zA-Z]+$/.test(user)) {
             var name = user[0].toUpperCase() + user.slice(1).toLowerCase();
@@ -18,20 +18,9 @@ module.exports = function Greeting(local) {
                     }
         }
     }
-// store names into the object
-    function setName(name) {
-        // if (name != '' && /^[a-zA-Z]+$/.test(name)) {
-        //     var name = name[0].toUpperCase() + name.slice(1).toLowerCase();
-        if(namesList[name]===undefined){
-            namesList[name] = 1
-        }else{
-            namesList[name]++
-        }
-    }
-
 
     function greetMessage(language, names) {
-        setName(names);
+        setNames(names);
         
         if (language === 'English') {
             greetMe = 'Hello, ' + names[0].toUpperCase() + names.slice(1).toLowerCase();
@@ -75,12 +64,11 @@ module.exports = function Greeting(local) {
     }
     
     return {
-        setName,
         greetCounter,
         getNames,
         greetMessage,
         getGreet,
-        namesFromDB,
+        setNames,
         Table,
         greeted,
         mydatabase,
