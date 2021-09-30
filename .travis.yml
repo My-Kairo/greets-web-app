@@ -6,6 +6,6 @@ env:
 
 before_script:
   - psql -c 'create database greeting;' -U postgres
-  - psql -U postgres -d greeting -a -f greet
+  - psql -U postgres -d greeting -a -f table.sql
 services:
   - postgresql
