@@ -20,7 +20,7 @@ module.exports = function Greeting(local) {
     }
 
     function greetMessage(language, names) {
-        setNames(names);
+        // setNames(names);
         
         if (language === 'English') {
             greetMe = 'Hello, ' + names[0].toUpperCase() + names.slice(1).toLowerCase();
@@ -31,9 +31,9 @@ module.exports = function Greeting(local) {
         }
     }
 
-    function greetCounter() {
-        return Object.keys(namesList).length;
-    }
+    // function greetCounter() {
+    //     return Object.keys(namesList).length;
+    // }
 
     async function getNames() {
         const slctdNames = await pool.query('select username from greet');
@@ -44,8 +44,9 @@ module.exports = function Greeting(local) {
         return greetMe;
     }
 
-    async function Table(){
+    async function poolTable(){
         const sqlCount = await pool.query('select count(*) from greet');
+        console.log(sqlCount.rows[0]);
         return sqlCount.rows[0].count;
     }
 
@@ -64,12 +65,12 @@ module.exports = function Greeting(local) {
     }
     
     return {
-        greetCounter,
+        // greetCounter,
         getNames,
         greetMessage,
         getGreet,
         setNames,
-        Table,
+        poolTable,
         greeted,
         mydatabase,
         getUserName

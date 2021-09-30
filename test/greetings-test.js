@@ -71,7 +71,7 @@ describe("Greeting",async  function () {
 
   it("should delete from greetings database", async function () {
     await greeting.mydatabase();
-    assert.equal(0, await greeting.Table());
+    assert.equal(0, await greeting.poolTable());
   });
 
   after(function () {

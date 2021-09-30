@@ -69,7 +69,7 @@ app.get("/", function (req, res) {
 app.get("/", async function (req, res) {
   try {
     res.render("index", {
-      greetedTimes: await greeting.Table(),
+      greetedTimes: await greeting.poolTable(),
     });
   } catch (error) {
     console.log(error);
@@ -84,24 +84,24 @@ app.post("/greet", async function (req, res, next) {
     if (language == undefined && names == "") {
       req.flash("info", "Please enter the name and select language!");
       res.render("index", {
-        count: await greeting.Table(),
+        count: await greeting.poolTable(),
       });
     } else if (language == undefined) {
       req.flash("info", "Please select a language!");
       res.render("index", {
-        count: await greeting.Table(),
+        count: await greeting.poolTable(),
       });
     } else if (names == "") {
       req.flash("info", "Please enter a valid name!");
       res.render("index", {
-        count: await greeting.Table(),
+        count: await greeting.poolTable(),
       });
     } else {
       greeting.greetMessage(language, names);
-      await greeting.setNames(names);
+     await greeting.setNames(names);
       res.render("index", {
         greetMe: greeting.getGreet(),
-        count: await greeting.Table(),
+        count: await greeting.poolTable(),
       });
       // greeting.greetMessage(language, names)
     }
@@ -123,17 +123,6 @@ app.get("/greeted", async function (req, res) {
     // console.log(nameList)
     res.render("greeted", {
       namesList: nameList,
-      // namesList: await greeting.greeted()
-    });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-app.post("/counter", async function (req, res) {
-  try {
-    res.render("greeted", {
-      greetedTimes: await greeting.greetCounter(),
     });
   } catch (error) {
     console.log(error);
