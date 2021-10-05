@@ -98,7 +98,7 @@ app.post("/greet", async function (req, res, next) {
       });
     } else {
       greeting.greetMessage(language, names);
-     await greeting.setNames(names);
+      await greeting.setNames(names);
       res.render("index", {
         greetMe: greeting.getGreet(),
         count: await greeting.poolTable(),

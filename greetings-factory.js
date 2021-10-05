@@ -1,6 +1,5 @@
 module.exports = function Greeting(local) {
 
-    var namesList = {};
     var greetMe = "";
     var pool = local;
     
@@ -19,40 +18,34 @@ module.exports = function Greeting(local) {
         }
     }
 
-    function greetMessage(language, names) {
+    async function greetMessage(language, names) {
         // setNames(names);
         
         if (language === 'English') {
             greetMe = 'Hello, ' + names[0].toUpperCase() + names.slice(1).toLowerCase();
+            //  await pool.query("insert into greet where username = $1", [names])
         } else if (language === 'Sesotho') {
             greetMe = 'Dumela, ' + names[0].toUpperCase() + names.slice(1).toLowerCase();
+            // await pool.query("insert into greet where username = $1", [names])
         } else if (language === "IsiXhosa") {
             greetMe = 'Molo, ' + names[0].toUpperCase() + names.slice(1).toLowerCase();
+            // await pool.query("insert into greet where username = $1", [names])
         }
     }
-
-    // function greetCounter() {
-    //     return Object.keys(namesList).length;
-    // }
 
     async function getNames() {
         const slctdNames = await pool.query('select username from greet');
         return slctdNames.rows;
     }
 
-    function getGreet() {
-        return greetMe;
+     function getGreet() {
+       return greetMe;
     }
 
     async function poolTable(){
         const sqlCount = await pool.query('select count(*) from greet');
-        console.log(sqlCount.rows[0]);
+        // console.log(sqlCount.rows[0]);
         return sqlCount.rows[0].count;
-    }
-
-    async function greeted(){
-        const sqlCount = await pool.query('select * from greet');
-        return sqlCount.rows;
     }
 
     async function getUserName(name){
@@ -65,13 +58,11 @@ module.exports = function Greeting(local) {
     }
     
     return {
-        // greetCounter,
         getNames,
         greetMessage,
         getGreet,
         setNames,
         poolTable,
-        greeted,
         mydatabase,
         getUserName
     }

@@ -20,44 +20,39 @@ describe("Greeting",async  function () {
     console.log("*****");
     await pool.query("delete from greet;");
   });
-  it("Should greet the name entered in English", async function () {
+  it("Should greet the name entered in English", function () {
     let hello = greeting;
-    var names = "Thato";
-    var langauge = "Hello, ";
 
-    await hello.setNames(names);
-
-    assert.equal("", hello.getGreet(langauge));
+    hello.greetMessage('English', 'Thato');
+    
+    assert.equal('Hello, Thato', hello.getGreet());
   });
 
   it('Should return the name greeted', async function () {
     let hello = greeting;
-    hello.setNames("Thato");
-
-    await hello.getNames('Thato');
-
-    assert.equal("", hello.getGreet());
+    const names = "Thato";
+    await hello.setNames(names);
+    let user = {username: "Thato"}
+    assert.deepEqual(user, (await hello.getNames())[0]);
+    
     // assert.equal('Name already greeted!', hello.getGreet())
+  });
+
+  it("Should greet the name entered in Sesotho", function () {
+    let hello = greeting;
+
+    hello.greetMessage('Sesotho', 'Thato');
+    
+    assert.equal('Dumela, Thato', hello.getGreet());
   });
 
   it("Should return the first character of the name entered in uppercase", async function () {
     let hello = greeting;
-    var names = "kairo";
+    var names = "Kairo";
 
     await hello.setNames(names);
     var  actualName = {username: 'Kairo'}
     assert.deepEqual(actualName, (await hello.getNames())[0]);
-  });
-
-  it("Should return the greeting in Sesotho",async function () {
-    let hello = greeting;
-    var names = "Kairo";
-    var langauge = "Dumela, ";
-
-    await hello.getNames(names);
-    await hello.getNames(names);
-
-    assert.equal("", hello.getGreet());
   });
 
   it("Should return how many times a name is being greeted", async function () {
