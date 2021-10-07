@@ -20,6 +20,17 @@ describe("Greeting",async  function () {
     console.log("*****");
     await pool.query("delete from greet;");
   });
+
+  it("Should return the first character of the name entered in uppercase", async function () {
+    await pool.query("delete from greet;");
+    let hello = greeting;
+    var names = "Kairo";
+
+    await hello.setNames(names);
+    var  actualName = {username: 'Kairo'}
+    assert.deepEqual(actualName, (await hello.getNames())[0]);
+  });
+
   it("Should greet the name entered in English", function () {
     let hello = greeting;
 
@@ -29,39 +40,46 @@ describe("Greeting",async  function () {
   });
 
   it('Should return the name greeted', async function () {
+    await pool.query("delete from greet;");
     let hello = greeting;
     const names = "Thato";
     await hello.setNames(names);
-    let user = {username: "Thato"}
+    let user = {username: names}
     assert.deepEqual(user, (await hello.getNames())[0]);
-    
-    // assert.equal('Name already greeted!', hello.getGreet())
-  });
-
-  it("Should greet the name entered in Sesotho", function () {
-    let hello = greeting;
-
-    hello.greetMessage('Sesotho', 'Thato');
-    
-    assert.equal('Dumela, Thato', hello.getGreet());
-  });
-
-  it("Should return the first character of the name entered in uppercase", async function () {
-    let hello = greeting;
-    var names = "Kairo";
-
-    await hello.setNames(names);
-    var  actualName = {username: 'Kairo'}
-    assert.deepEqual(actualName, (await hello.getNames())[0]);
   });
 
   it("Should return how many times a name is being greeted", async function () {
+    await pool.query("delete from greet;");
     let hello = greeting;
     var names = "Thato";
+    var nms = "Hatsi"
 
     await hello.setNames(names);
+    await hello.setNames(nms);
 
-    assert.equal(1, (await hello.getNames()).length);
+    assert.equal(2, (await hello.getNames()).length);
+  });
+
+  it("Should return names greeted with counters", async function(){
+    await pool.query("delete from greet;");
+    let hello = greeting;
+
+    (await hello.getUserName("Thato").counter_);
+   (await hello.getUserName("Kairo").counter_);
+    (await hello.getUserName("Boimamelo").counter_);
+
+    assert.equal([], (await hello.getNames()).length)
+  });
+
+  it("Should add data into the database", async function(){
+    await pool.query("delete from greet;");
+    let hello = greeting;
+    await hello.getUserName("Hatsi").counter_
+    await hello.getUserName("Tsoho").counter_
+    await hello.getUserName("Bonny").counter_
+    await hello.getUserName("Luks").counter_
+
+    assert.equal([0], await hello.poolTable())
   });
 
   it("should delete from greetings database", async function () {
