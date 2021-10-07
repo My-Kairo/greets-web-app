@@ -1,4 +1,20 @@
-app.post("/greet", async function (req, res, next) {
+module.exports()= function greetRoutes(greeting){
+
+  function defaultPG(req, res) {
+    res.render("index");
+  }
+
+  async function homePage (req, res) {
+    try {
+      res.render("index", {
+        greetedTimes: await greeting.poolTable(),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function errorMessages(req, res, next) {
     try {
       let language = req.body.language;
       let names = req.body.textBoxBttn;
@@ -20,34 +36,38 @@ app.post("/greet", async function (req, res, next) {
         });
       } else {
         greeting.greetMessage(language, names);
-       await greeting.setNames(names);
+        await greeting.setNames(names);
         res.render("index", {
           greetMe: greeting.getGreet(),
           count: await greeting.poolTable(),
         });
+        // greeting.greetMessage(language, names)
+      }
+      // greeting.getNames()
+      // console.log(greeting.Table());
+    } catch (error) {
+      next(error);
     }
-  } catch (error) {
-    next(error);
   }
-});
 
-app.post("/greet", async function (req, res) {
+  async function nameList(req, res) {
     var namesList = await greeting.getNames();
     res.render("greeted", { namesList });
-  });
-  
-  app.get("/greeted", async function (req, res) {
+  }
+
+  async function gettingNames(req, res) {
     try {
       var nameList = await greeting.getNames();
+      // console.log(nameList)
       res.render("greeted", {
         namesList: nameList,
       });
     } catch (error) {
       console.log(error);
     }
-  });
+  }
 
-  app.get("/counter/:username", async function (req, res) {
+  async function userName(req, res) {
     var name = req.params.username;
     let grtNames = await greeting.getUserName(name);
     console.log(grtNames);
@@ -55,12 +75,13 @@ app.post("/greet", async function (req, res) {
       username: name,
       greetedTimes: grtNames,
     });
-  });
-  
-  app.post("/home", function (req, res) {
+  }
+
+  function backRoute(req, res) {
     res.redirect("/");
-  });
-  app.post("/clear", async function (req, res) {
+  }
+
+  async function deleteList(req, res) {
     try {
       req.flash("info", "Database deleted successfully");
       await greeting.mydatabase();
@@ -68,9 +89,9 @@ app.post("/greet", async function (req, res) {
     } catch (error) {
       console.log(error);
     }
-  });
+  }
 
-  app.post("/reset", async function (req, res) {
+  async function deleteDB(req, res) {
     try {
       req.flash("info", "Database deleted successfully");
       await greeting.mydatabase();
@@ -78,4 +99,18 @@ app.post("/greet", async function (req, res) {
     } catch (error) {
       console.log(error);
     }
-  });
+  }
+
+  return{
+    defaultPG,
+    homePage,
+    errorMessages,
+    nameList,
+    gettingNames,
+    userName,
+    backRoute,
+    deleteList,
+    deleteDB
+    
+  }
+}

@@ -23,13 +23,10 @@ module.exports = function Greeting(local) {
         
         if (language === 'English') {
             greetMe = 'Hello, ' + names[0].toUpperCase() + names.slice(1).toLowerCase();
-            //  await pool.query("insert into greet where username = $1", [names])
         } else if (language === 'Sesotho') {
             greetMe = 'Dumela, ' + names[0].toUpperCase() + names.slice(1).toLowerCase();
-            // await pool.query("insert into greet where username = $1", [names])
         } else if (language === "IsiXhosa") {
             greetMe = 'Molo, ' + names[0].toUpperCase() + names.slice(1).toLowerCase();
-            // await pool.query("insert into greet where username = $1", [names])
         }
     }
 
