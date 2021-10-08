@@ -48,19 +48,7 @@ describe("Greeting",async  function () {
     assert.deepEqual(user, (await hello.getNames())[0]);
   });
 
-  it("Should return how many times a name is being greeted", async function () {
-    await pool.query("delete from greet;");
-    let hello = greeting;
-    var names = "Thato";
-    var nms = "Hatsi"
-
-    await hello.setNames(names);
-    await hello.setNames(nms);
-
-    assert.equal(2, (await hello.getNames()).length);
-  });
-
-  it("Should return names greeted with counters", async function(){
+  it("Should return how many names greeted", async function(){
     await pool.query("delete from greet;");
     let hello = greeting;
 
@@ -71,7 +59,7 @@ describe("Greeting",async  function () {
     assert.equal(3, await hello.poolTable())
   });
 
-  it("Should add data into the database", async function(){
+  it("Should return how many times a name is greeted", async function(){
     await pool.query("delete from greet;");
     let hello = greeting;
     await hello.setNames("Hatsi")
