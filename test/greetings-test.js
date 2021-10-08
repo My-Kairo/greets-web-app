@@ -64,22 +64,22 @@ describe("Greeting",async  function () {
     await pool.query("delete from greet;");
     let hello = greeting;
 
-    (await hello.getUserName("Thato").counter_);
-   (await hello.getUserName("Kairo").counter_);
-    (await hello.getUserName("Boimamelo").counter_);
+    await hello.setNames("mimi")
+    await hello.setNames("lolo")
+    await hello.setNames("bobo")
 
-    assert.equal([], (await hello.getNames()).length)
+    assert.equal(3, await hello.poolTable())
   });
 
   it("Should add data into the database", async function(){
     await pool.query("delete from greet;");
     let hello = greeting;
-    await hello.getUserName("Hatsi").counter_
-    await hello.getUserName("Tsoho").counter_
-    await hello.getUserName("Bonny").counter_
-    await hello.getUserName("Luks").counter_
+    await hello.setNames("Hatsi")
+    await hello.setNames("Hatsi")
+    await hello.setNames("zola")
 
-    assert.equal([0], await hello.poolTable())
+    assert.equal(2, await hello.getUserName('Hatsi'))
+
   });
 
   it("should delete from greetings database", async function () {
